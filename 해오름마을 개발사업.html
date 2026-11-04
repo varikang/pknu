@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="color-scheme" content="light" />
+<title>해오름마을 | 100억 원 정책 시뮬레이터</title>
+<style>
+:root{--ink:#18334b;--muted:#63768a;--teal:#168e9a;--deep:#163e59;--bg:#f1f6f8;--line:#dbe5e9;--white:#fff;--orange:#e49a38;--green:#20836f;--red:#b94e58;--shadow:0 9px 30px rgba(19,57,78,.07)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:'Pretendard','Noto Sans KR','Malgun Gothic',-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;line-height:1.55}button,select,input{font:inherit}button{cursor:pointer}button:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #64b8cb;outline-offset:3px}
+.topline{height:8px;background:linear-gradient(90deg,#0c657b,#21b1a6)}.wrap{max-width:1120px;margin:0 auto;padding:0 22px}.hero{background:linear-gradient(115deg,#183d59 0%,#145d73 60%,#168f91 100%);color:white;padding:43px 0 48px}.eyebrow{font-size:13px;letter-spacing:.1em;font-weight:800;color:#ade8dc}.hero h1{margin:9px 0 9px;font-size:clamp(29px,4.6vw,45px);line-height:1.22;letter-spacing:-.035em}.hero p{margin:0;max-width:790px;color:#d4edf3;font-size:16px}.hero-facts{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}.pill{border:1px solid #ffffff48;background:#ffffff15;border-radius:99px;padding:7px 13px;font-size:13px}.pill strong{font-size:15px;color:white}.layout{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(290px,.78fr);gap:22px;margin-top:26px;margin-bottom:22px}.panel{border:1px solid var(--line);border-radius:17px;background:#fff;box-shadow:var(--shadow);padding:24px}.section{margin-bottom:20px}.section:last-child{margin-bottom:0}.heading{display:flex;align-items:center;gap:10px;margin-bottom:8px}.step{display:inline-grid;place-items:center;width:29px;height:29px;border-radius:9px;background:#d9f1f0;color:#067b80;font-size:14px;font-weight:850}.heading h2{font-size:21px;margin:0;letter-spacing:-.025em}.sub{font-size:13px;color:var(--muted);margin:4px 0 17px}.allocation{background:#f8fbfc;border:1px solid #e6eef0;border-radius:13px;padding:16px 17px;margin:10px 0}.all-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}.all-name{font-weight:800;font-size:16px}.all-desc{font-size:12px;color:var(--muted);margin-top:3px}.amount{font-size:20px;white-space:nowrap;color:var(--deep);font-weight:850}.sliderrow{display:flex;gap:10px;align-items:center;margin-top:12px}input[type=range]{width:100%;accent-color:var(--teal);cursor:pointer;min-width:0}.smallbtn{width:33px;height:32px;border:1px solid #c6d7df;background:white;border-radius:8px;font-size:21px;line-height:1;flex:none;color:var(--deep)}.budgetbox{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:16px 0 6px;padding:13px 14px;border-radius:12px;background:#e9f4f5}.budgetbox .number{font-weight:900;font-size:22px;white-space:nowrap}.budgetbox.warn{background:#fff0ed;color:#a93b3f}.hint{font-size:12px;color:var(--muted);margin:6px 0}.hint.error{color:#aa3535;font-weight:700}.choices{display:grid;grid-template-columns:1fr 1fr;gap:11px}.fieldbox{border:1px solid #e4ebef;border-radius:12px;padding:13px;background:#fbfdfd}.fieldbox label{display:block;font-weight:800;font-size:13px;margin-bottom:5px}.fieldbox select{width:100%;min-width:0;border:1px solid #cbdbe3;border-radius:9px;background:white;color:var(--ink);padding:10px 8px;font-size:13px}.radioes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.radioes label{display:flex;align-items:center;gap:8px;border:1px solid #dce7ed;border-radius:11px;padding:11px 12px;cursor:pointer;font-weight:700;font-size:13px}.radioes label:has(input:checked){border-color:#40a5a6;background:#eaf8f6}.radioes input{accent-color:var(--teal)}.action{display:flex;gap:10px;flex-wrap:wrap;margin-top:21px}.primary{background:#137e8a;color:white;font-weight:800;border:0;border-radius:11px;padding:12px 19px}.primary:hover{background:#0c6974}.secondary{background:#fff;color:var(--ink);font-weight:700;border:1px solid #cbdce2;border-radius:11px;padding:11px 16px}.primary:disabled{background:#9cb7bc;cursor:not-allowed}.side{align-self:start;position:sticky;top:18px}.side h3{margin:0 0 10px;font-size:19px}.side ul{margin:10px 0;padding-left:20px;font-size:14px;color:#3c5666}.side li{margin-bottom:9px}.note{font-size:12px;color:var(--muted)}.notice{background:#eff7f7;border-radius:11px;padding:12px 14px;border-left:4px solid var(--teal);font-size:13px}.results{margin-bottom:40px;scroll-margin-top:20px}.hidden{display:none!important}.result-head{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:17px}.result-head h2{margin:0;font-size:25px}.result-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}.metric{border:1px solid #dce8eb;background:#f7fafb;border-radius:12px;padding:15px 10px}.metric .label{color:var(--muted);font-size:12px;font-weight:700}.metric .value{font-size:clamp(19px,2.6vw,29px);font-weight:900;color:#164660;margin:5px 0}.metric .delta{font-size:11px;color:#4f7581}.chartzone{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:22px 0}.chartbox{border:1px solid #e4ebee;border-radius:14px;padding:18px}.chartbox h3{font-size:16px;margin:0 0 15px}.barrow{display:grid;grid-template-columns:68px 1fr 40px;gap:8px;align-items:center;margin:12px 0;font-size:12px}.track{height:14px;border-radius:9px;background:#e3edf0;overflow:hidden}.fill{height:100%;border-radius:9px;background:linear-gradient(90deg,#1c8097,#20b0a4);transition:width .3s}.chartfoot{font-size:11px;color:var(--muted)}.explain{border-top:1px solid #e8eff2;padding-top:14px;font-size:14px}.explain li{margin:6px 0}.summarycard{background:#edf6f6;border-radius:12px;padding:14px 17px}.summarycard h3{margin:0 0 8px;font-size:16px}.summarycard p{margin:5px 0;font-size:14px}.foot{font-size:12px;color:var(--muted);padding:0 0 28px}.details{margin-top:14px}.details summary{font-weight:800;cursor:pointer;color:#176b78}.details p,.details li{font-size:13px;color:#496372}.details code{font-size:12px}.toast{color:#166577;font-weight:700;font-size:13px;min-height:20px}.inlinecode{background:#e8f1f4;padding:2px 5px;border-radius:4px}.mutedtag{font-size:11px;color:#567485;background:#e9f1f3;padding:5px 8px;border-radius:6px;display:inline-block} 
+@media(max-width:820px){.layout{grid-template-columns:1fr}.side{position:static}.result-grid{grid-template-columns:repeat(2,1fr)}.chartzone{grid-template-columns:1fr}}@media(max-width:480px){.wrap{padding:0 13px}.panel{padding:18px}.hero{padding:33px 0}.hero-facts{gap:6px}.pill{font-size:11px;padding:5px 8px}.choices,.radioes{grid-template-columns:1fr}.result-grid{grid-template-columns:1fr 1fr}.barrow{grid-template-columns:58px 1fr 31px}.action>*{flex:1}}@media print{.hero{background:#fff;color:#123!important;padding:12px 0}.hero p,.eyebrow{color:#123}.layout,.action,.foot{display:none!important}.results{display:block!important}.panel{box-shadow:none}.result-grid{grid-template-columns:repeat(5,1fr)}body{background:white}}
+</style>
+</head>
+<body>
+<div class="topline"></div>
+<header class="hero"><div class="wrap"><div class="eyebrow">PUBLIC POLICY LAB · 교육용 시제품</div><h1>100억 원으로 어촌을 살릴 수 있을까?</h1><p>해오름마을의 개발 책임자가 되어 예산과 운영방식을 선택하세요. 5년 후 안전·지역경제·정주여건·인구·재정부담은 어떻게 달라질까요?</p><div class="hero-facts"><span class="pill">초기 인구 <strong>350명</strong></span><span class="pill">고령화율 <strong>45%</strong></span><span class="pill">총예산 <strong>100억 원</strong></span><span class="pill">평가 시점 <strong>5년 후</strong></span></div></div></header>
+<main class="wrap">
+<div class="layout"><div class="panel">
+<section class="section"><div class="heading"><span class="step">1</span><h2>개발예산 배분하기</h2></div><p class="sub">네 사업에 총 100억 원을 배분하세요. 5억 원 단위로 조정합니다. 투자효과는 점차 체감합니다.</p><div id="allocations"></div><div id="budgetStatus" class="budgetbox" role="status" aria-live="polite"><span>예산 합계</span><span class="number" id="total">100 / 100억 원</span></div><p class="hint" id="budgetHint">합계가 정확히 100억 원일 때 결과를 계산할 수 있습니다.</p></section>
+<section class="section"><div class="heading"><span class="step">2</span><h2>사업별 운영방식 정하기</h2></div><p class="sub">사업의 성격에 따라 허용된 운영방식 중 하나를 선택하세요. 운영방식은 정책효과·주민편익 귀속·공공부문 운영비 부담에 영향을 줍니다.</p><div class="choices" id="operationChoices"></div></section>
+<section class="section"><div class="heading"><span class="step">3</span><h2>중요한 정책목표 정하기</h2></div><p class="sub">같은 사업결과도 어떤 공공가치를 우선하느냐에 따라 평가가 달라집니다.</p><div class="radioes" id="goalChoices"></div></section>
+<div class="action"><button type="button" class="primary" id="runBtn">5년 후 정책성과 계산 →</button><button type="button" class="secondary" id="resetBtn">처음부터 다시</button></div><p class="toast" id="message" role="status" aria-live="polite"></p>
+</div>
+<aside class="side"><div class="panel"><h3>해오름마을의 상황</h3><ul><li>연안어업·소규모 양식업 중심</li><li>노후 방파제와 접안시설</li><li>의료기관까지 약 1시간, 대중교통 하루 4회</li><li>해안경관과 관광 잠재력은 있지만 지역소득 기반이 약함</li><li>지난 10년간 인구 150명 감소</li></ul><div class="notice"><strong>이 게임에 정답은 없습니다.</strong><br>어떤 사업도 비용 없이 모든 목표를 달성하지 못합니다. 투자 우선순위와 사후 관리의 부담을 함께 살펴보세요.</div><p class="note" style="margin-top:13px">주의: 해오름마을은 가상 마을입니다. 사업 효과계수, 인구변화, 운영비율은 실제 통계가 아닌 교육용 가정입니다.</p></div></aside>
+</div>
+<section class="panel results hidden" id="results" aria-live="polite"><div class="result-head"><div><span class="mutedtag">교육용 모형의 계산 결과</span><h2>해오름마을, 5년 후</h2></div><div class="action" style="margin:0"><button class="secondary" type="button" id="saveBtn">결과 텍스트 저장</button><button class="secondary" type="button" id="printBtn">인쇄 / PDF</button></div></div>
+<div class="result-grid" id="metrics"></div>
+<div class="chartzone"><div class="chartbox"><h3>분야별 성과지수</h3><div id="bars"></div><p class="chartfoot">점수 0~100점. 회색의 초기 수준 30점에서 교육용 모형을 통해 개선되는 정도입니다.</p></div><div class="chartbox"><h3>재정부담 및 정책평가</h3><div class="summarycard" id="finance"></div><div class="summarycard" id="score" style="margin-top:11px"></div></div></div>
+<div class="explain"><h3>이 선택에서 토론할 점</h3><ul id="insights"></ul></div>
+<details class="details"><summary>계산규칙과 모형의 가정 자세히 보기</summary><div id="methodology"></div></details>
+<p class="note">모든 성과지수와 예상 인구는 교육용 가정으로 산출한 가상 수치입니다. 실제 사업의 정책효과를 예측하거나 특정 운영방식의 우수성을 입증하지 않습니다. 비교를 위해 외부충격과 무작위 요소는 사용하지 않습니다.</p></section>
+<footer class="foot">해오름마을 정책 시뮬레이터 · 국립부경대학교 행정학 수업 활용 · 오프라인 실행 가능 · 응답을 외부로 전송하거나 저장하지 않음</footer>
+</main>
+<script>
+'use strict';
+const PROJECTS=[
+ {id:'safety',title:'어항 안전시설',desc:'방파제·접안시설·피항 기능',rate:.01,ops:[['central','중앙정부 주도'],['local','지방정부 주도']]},
+ {id:'living',title:'생활서비스',desc:'교통·의료·돌봄·정주여건',rate:.04,ops:[['local','지방정부 직접운영'],['joint','지방정부·주민 협력']]},
+ {id:'tourism',title:'관광개발',desc:'관광시설·경관·체험',rate:.07,ops:[['local','지방정부 직접운영'],['private','민간기업 운영'],['coop','주민협동조합 운영']]},
+ {id:'fishery',title:'어업소득 지원',desc:'가공·유통·어업인 지원',rate:.03,ops:[['local','지방정부 지원'],['fishcoop','어업인협동조합 중심']]}
+];
+// Columns sum to 1.00. A project can contribute to several outcomes.
+const W={safety:[.85,.12,.10],living:[.05,.08,.65],tourism:[.02,.45,.10],fishery:[.08,.35,.15]};
+const GOALS={balanced:{label:'균형발전',w:[.333,.333,.334]},safety:{label:'안전 최우선',w:[.60,.20,.20]},economy:{label:'경제성장 최우선',w:[.20,.60,.20]},living:{label:'정주여건 최우선',w:[.20,.20,.60]}};
+// Values below are explicitly fictional pedagogical parameters, not causal estimates.
+const OP={
+ safety:{central:{effect:1.04,publicShare:1,retain:1},local:{effect:.98,publicShare:1,retain:1}},
+ living:{local:{effect:.98,publicShare:1,retain:1},joint:{effect:1.04,publicShare:.90,retain:1}},
+ tourism:{local:{effect:1,publicShare:1,retain:.90,publicRev:.70},private:{effect:1.05,publicShare:.20,retain:.65,publicRev:0},coop:{effect:.97,publicShare:.40,retain:1,publicRev:.20}},
+ fishery:{local:{effect:1,publicShare:1,retain:.90},fishcoop:{effect:1.04,publicShare:.75,retain:1}}
+};
+const DEFAULT=[30,25,25,20];
+let budgets=[...DEFAULT];let current=null;
+const $=id=>document.getElementById(id);
+const clamp=(v,min,max)=>Math.min(max,Math.max(min,v));
+const fmt=(v,d=1)=>v.toLocaleString('ko-KR',{minimumFractionDigits:d,maximumFractionDigits:d});
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function buildInputs(){
+ $('allocations').innerHTML=PROJECTS.map((p,i)=>`<div class="allocation"><div class="all-head"><div><div class="all-name">${p.title}</div><div class="all-desc">${p.desc}</div></div><div class="amount"><span id="amount-${i}">${budgets[i]}</span>억 원</div></div><div class="sliderrow"><button type="button" class="smallbtn" aria-label="${p.title} 5억 원 줄이기" data-delta="-5" data-idx="${i}">−</button><input aria-label="${p.title} 투자예산" type="range" min="0" max="100" step="5" value="${budgets[i]}" id="range-${i}"><button type="button" class="smallbtn" aria-label="${p.title} 5억 원 늘리기" data-delta="5" data-idx="${i}">+</button></div></div>`).join('');
+ $('operationChoices').innerHTML=PROJECTS.map(p=>`<div class="fieldbox"><label for="op-${p.id}">${p.title}</label><select id="op-${p.id}">${p.ops.map(([v,t],i)=>`<option value="${v}" ${i===0?'selected':''}>${t}</option>`).join('')}</select></div>`).join('');
+ $('goalChoices').innerHTML=Object.entries(GOALS).map(([id,g],i)=>`<label><input type="radio" name="goal" value="${id}" ${i===0?'checked':''}>${g.label}</label>`).join('');
+ PROJECTS.forEach((p,i)=>{$('range-'+i).addEventListener('input',e=>changeBudget(i,Number(e.target.value)))});
+ document.querySelectorAll('[data-delta]').forEach(el=>el.addEventListener('click',()=>{const i=Number(el.dataset.idx);changeBudget(i,clamp(budgets[i]+Number(el.dataset.delta),0,100))}));
+ document.querySelectorAll('select,input[name=goal]').forEach(el=>el.addEventListener('change',clearResult));
+ updateBudget();
+}
+function changeBudget(i,v){budgets[i]=v;updateBudget();clearResult()}
+function clearResult(){$('results').classList.add('hidden');current=null;$('message').textContent=''}
+function updateBudget(){const sum=budgets.reduce((a,b)=>a+b,0);PROJECTS.forEach((p,i)=>{$('amount-'+i).textContent=budgets[i];$('range-'+i).value=budgets[i]});$('total').textContent=`${sum} / 100억 원`;$('budgetStatus').classList.toggle('warn',sum!==100);$('budgetHint').className='hint'+(sum!==100?' error':'');$('budgetHint').textContent=sum===100?'합계가 정확히 100억 원입니다. 결과를 계산할 수 있습니다.':sum>100?`예산이 ${sum-100}억 원 초과되었습니다. 다른 항목에서 줄여주세요.`:`아직 ${100-sum}억 원을 더 배분할 수 있습니다.`;$('runBtn').disabled=sum!==100}
+function calc(){
+ const ops=Object.fromEntries(PROJECTS.map(p=>[p.id,$('op-'+p.id).value]));
+ const goal=document.querySelector('input[name=goal]:checked').value;
+ const effect=PROJECTS.map((p,i)=>100*(1-Math.exp(-budgets[i]/25))*OP[p.id][ops[p.id]].effect);
+ // Economic output should reflect local benefit capture, not just gross income.
+ const score=[0,1,2].map(dim=>clamp(30+65*PROJECTS.reduce((s,p,i)=>s+W[p.id][dim]*effect[i]/100*(dim===1?OP[p.id][ops[p.id]].retain:1),0),0,100));
+ const pop=Math.round(315+.4*(score[1]-30)+.8*(score[2]-30));
+ const annualOM=PROJECTS.reduce((s,p,i)=>s+budgets[i]*p.rate,0);
+ const publicOM=PROJECTS.reduce((s,p,i)=>s+budgets[i]*p.rate*OP[p.id][ops[p.id]].publicShare,0);
+ // Simple fictional tourism receipts: 8% of tourism capital per year after opening.
+ // Public fraction depends on operator; this is revenue to facility operator, not village-wide benefit.
+ const tourismRevenue=budgets[2]*.08;
+ const publicReceipts=tourismRevenue*(OP.tourism[ops.tourism].publicRev||0);
+ const publicNet=publicOM-publicReceipts;
+ const finalScore=score.reduce((s,v,i)=>s+v*GOALS[goal].w[i],0);
+ return {budgets:[...budgets],ops,goal,score,pop,effect,annualOM,publicOM,tourismRevenue,publicReceipts,publicNet,finalScore};
+}
+function render(r){current=r;const names=['안전도','지역경제','정주매력'];
+ const items=[{label:'안전도',value:`${fmt(r.score[0],0)}점`,d:'초기 기준 30점'},{label:'지역경제',value:`${fmt(r.score[1],0)}점`,d:'지역 내 편익 반영'},{label:'정주매력',value:`${fmt(r.score[2],0)}점`,d:'초기 기준 30점'},{label:'5년 후 인구',value:`${r.pop}명`,d:'미개입 기준 315명'},{label:'연간 공공 순부담',value:`${fmt(r.publicNet)}억`,d:r.publicNet<0?'가정상 운영흑자':'유지관리비 − 공공수입'}];
+ $('metrics').innerHTML=items.map(v=>`<div class="metric"><div class="label">${v.label}</div><div class="value">${v.value}</div><div class="delta">${v.d}</div></div>`).join('');
+ $('bars').innerHTML=r.score.map((v,i)=>`<div class="barrow"><strong>${names[i]}</strong><div class="track"><div class="fill" style="width:${v}%"></div></div><strong>${fmt(v,0)}</strong></div>`).join('');
+ $('finance').innerHTML=`<h3>연간 운영·유지관리 재정</h3><p>전체 유지관리비: <strong>${fmt(r.annualOM)}억 원</strong></p><p>공공부문 부담분: <strong>${fmt(r.publicOM)}억 원</strong></p><p>관광시설 공공 운영수입: <strong>${fmt(r.publicReceipts)}억 원</strong></p><p>연간 공공 순부담: <strong>${fmt(r.publicNet)}억 원</strong></p><p class="note">민간·협동조합 부담분은 사라진 비용이 아닙니다. 공공부문의 부담분에서만 제외됩니다.</p>`;
+ $('score').innerHTML=`<h3>정책목표별 평가</h3><p>선택한 목표: <strong>${GOALS[r.goal].label}</strong></p><p>가중 종합지수: <strong style="font-size:22px;color:#0d7e85">${fmt(r.finalScore,1)}점</strong> / 100점</p><p class="note">가중치: 안전 ${Math.round(GOALS[r.goal].w[0]*100)}% · 경제 ${Math.round(GOALS[r.goal].w[1]*100)}% · 정주 ${Math.round(GOALS[r.goal].w[2]*100)}%. 인구·재정부담은 별도 검토합니다.</p>`;
+ const sorted=[...r.budgets].map((b,i)=>({b,i})).sort((a,b)=>b.b-a.b);const top=sorted[0];let notes=[`가장 많은 예산(${top.b}억 원)을 배정한 사업은 ${PROJECTS[top.i].title}입니다. 다른 사업을 줄인 기회비용도 설명해 보세요.`];
+ if(r.budgets[0]<15)notes.push('안전시설 투자 비중이 낮습니다. 안전 개선의 기회비용과 사고 위험 관리 방안을 토론해 보세요.');
+ if(r.budgets[1]<15)notes.push('생활서비스 투자 비중이 낮습니다. 소득 개선만으로 주민의 정주 의향이 높아질지 검토해 보세요.');
+ if(r.budgets[2]>=40)notes.push('관광에 큰 비중을 배정했습니다. 관광수입이 주민에게 얼마나 귀속되며 운영비를 누가 부담하는지 검토해 보세요.');
+ if(r.ops.tourism==='private')notes.push('민간 관광운영으로 공공 유지관리 부담을 줄였지만, 관광 편익 일부가 지역 밖으로 유출되는 가정을 적용했습니다.');
+ if(r.ops.tourism==='coop')notes.push('주민협동조합 관광운영은 지역 내 편익 귀속률을 높인다는 가정을 적용했습니다. 실제로는 전문성과 거버넌스도 중요합니다.');
+ if(r.publicNet>2)notes.push(`공공부문에 연간 약 ${fmt(r.publicNet)}억 원의 순부담이 남습니다. 5년 이후 지방정부가 감당할 수 있는지 검토하세요.`);
+ notes.push('이 결과는 가정에 따른 모의계산입니다. 계수나 정책목표 가중치가 달라지면 우수한 대안의 순위도 달라질 수 있습니다.');
+ $('insights').innerHTML=notes.map(s=>`<li>${esc(s)}</li>`).join('');
+ $('methodology').innerHTML=`<p><strong>투자효과</strong> E(B)=100×(1−exp(−B/25)) × 사업별 운영계수(0.97~1.05).</p><p><strong>성과</strong> 세 성과지수는 30점 + 65 × Σ(사업별 기여가중치 × E/100)이며, 지역경제에는 운영방식별 지역 내 편익 귀속계수(0.65~1.00)를 추가 적용합니다.</p><p><strong>기여가중치</strong> 사업 순서: 안전시설 [85%,12%,10%], 생활서비스 [5%,8%,65%], 관광개발 [2%,45%,10%], 어업지원 [8%,35%,15%]; 각 성과지표 열 합계 100%.</p><p><strong>인구</strong> 5년 무개입 기준 315명 + 0.4×(지역경제−30) + 0.8×(정주매력−30). 반올림한 인구를 표시합니다.</p><p><strong>연간 운영비</strong> 안전 1%, 생활 4%, 관광 7%, 어업지원 3% × 해당 투자금. 공공 부담비율은 운영방식별로 달리 가정합니다. 관광의 연간 총 운영수입은 관광 투자액의 8%로 가정하며, 그중 공공에 귀속되는 몫만 공공 재정 계산에 반영합니다. 관광시설 운영수입은 지역 전체 소득과 동일하지 않습니다.</p><p><strong>비교 주의</strong> 여러 결과를 비교할 때는 같은 정책목표 가중치를 적용해야 합니다. 모든 계수·가정은 정책학 수업에서 상충관계를 보여주기 위한 가상값으로, 실증 추정이나 공식 정책평가 자료가 아닙니다.</p>`;
+ $('results').classList.remove('hidden');$('message').textContent='계산이 완료되었습니다.';$('results').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function summary(r){const names=['안전도','지역경제','정주매력'];return ['해오름마을 정책 시뮬레이션 결과','※ 본 자료의 수치는 교육용 가상 모형 결과입니다.','',`정책목표: ${GOALS[r.goal].label}`,...PROJECTS.map((p,i)=>`${p.title}: ${r.budgets[i]}억 원 / ${p.ops.find(([v])=>v===r.ops[p.id])[1]}`),'',...names.map((n,i)=>`${n}: ${fmt(r.score[i],1)}점`),`5년 후 인구: ${r.pop}명 (무개입 가정 315명)`,`연간 전체 유지관리비: ${fmt(r.annualOM)}억 원`,`연간 공공부문 순부담: ${fmt(r.publicNet)}억 원`,`목표가중 종합지수: ${fmt(r.finalScore,1)}점`,'','해석 주의: 실제 정책효과의 예측치가 아닙니다.'].join('\n')}
+$('runBtn').addEventListener('click',()=>{if(budgets.reduce((a,b)=>a+b,0)!==100)return;render(calc())});
+$('resetBtn').addEventListener('click',()=>{budgets=[...DEFAULT];buildInputs();clearResult();window.scrollTo({top:0,behavior:'smooth'})});
+$('saveBtn').addEventListener('click',()=>{if(!current)return;const blob=new Blob(['\ufeff'+summary(current)],{type:'text/plain;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='haeoreum_policy_result.txt';a.click();setTimeout(()=>URL.revokeObjectURL(url),1200)});
+$('printBtn').addEventListener('click',()=>{if(current)window.print()});
+buildInputs();
+</script>
+</body></html>
